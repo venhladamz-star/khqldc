@@ -248,8 +248,8 @@ body{
   transition:transform .15s ease, background .15s ease;
 }
 .q-open:hover,.q-open:focus-visible{background:#FFEAF3;transform:translateY(-2px)}
-.q-text.peek{cursor:pointer}
-.q-text.peek:hover{background:rgba(255,111,165,.14)}
+.q-sit.peek{cursor:pointer;box-shadow:var(--shadow-sm)}
+.q-sit.peek:hover{background:rgba(245,185,66,.32)}
 .q-body{animation:screenIn .34s cubic-bezier(.2,.8,.3,1) both}
 .q-sit{
   background:rgba(245,185,66,.16);border-left:5px solid var(--gold);
@@ -263,7 +263,6 @@ body{
 .q-text .lbl{color:var(--lotus)}
 .q-sit b{color:var(--ink)}
 
-.ans-tip{font-size:.78rem;color:var(--ink-3);margin-top:2px;margin-bottom:14px;font-weight:600;line-height:1.55}
 .ans-reveal{
   border:2px solid var(--ink);border-radius:14px;background:#FFF9E9;
   padding:12px 14px;font-family:var(--font-display);font-weight:800;
@@ -474,11 +473,6 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
 
     <h1 class="intro-title">MẬT MÃ<br /><span>QUẢN LÝ</span></h1>
     <p class="intro-sub" id="introSub">11 câu hỏi · 11 món quà tri thức</p>
-    <p class="intro-desc">
-      Nhân ngày <b>20/10 — Ngày Phụ nữ Việt Nam</b>, cùng ôn lại Chương 2 qua <b id="introCount">11</b> tình huống quản lý.
-      Không có đáp án để chọn: cả lớp <b>tự nghĩ đáp án</b> rồi <b>trả lời bằng miệng</b> khi chiếu lên lớp.
-      Đúng thì bấm <b>✓</b>, sai thì chuyển câu tiếp.
-    </p>
 
     <div class="chain" aria-label="Luồng chơi">
       <div class="chain-item"><b>1</b> Đọc tình huống</div>
@@ -517,14 +511,9 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
         </div>
 
         <div class="q-body" id="qBody">
-          <div class="q-sit" id="qSit" hidden></div>
-          <p class="q-text" id="qText"></p>
-          <button class="q-open" id="qOpen" type="button">📋 NHẤN VÀO CÂU HỎI ĐỂ XEM TÌNH HUỐNG</button>
-        </div>
-
-        <div class="ans-tip" id="answerTip">
-          Cả lớp <b>trả lời bằng miệng</b> — giáo viên bấm <b>✓ ĐÚNG · HIỆN ĐÁP ÁN</b>
-          để mở đáp án + lời giải cho cả lớp; nếu sai thì chuyển câu tiếp.
+          <div class="q-sit" id="qSit"></div>
+          <p class="q-text" id="qText" hidden></p>
+          <button class="q-open" id="qOpen" type="button">📋 NHẤN VÀO TÌNH HUỐNG ĐỂ XEM CÂU HỎI</button>
         </div>
 
         <div class="ans-reveal" id="answerReveal" hidden><span>ĐÁP ÁN</span><b></b></div>
@@ -869,7 +858,7 @@ const el = {
   qBadge: $("qBadge"), qTier: $("qTier"), qState: $("qState"), qText: $("qText"),
   qOpen: $("qOpen"), qBody: $("qBody"), qSit: $("qSit"),
   answerReveal: $("answerReveal"), answerStrip: $("answerStrip"),
-  stripWrap: $("stripWrap"), qActions: $("qActions"), answerTip: $("answerTip"),
+  stripWrap: $("stripWrap"), qActions: $("qActions"),
   feedbackEl: $("feedbackEl"), qMeta: $("qMeta"),
   btnHint: $("btnHint"), btnConfirm: $("btnConfirm"),
   btnPrev: $("btnPrev"), btnNext: $("btnNext"), qCounter: $("qCounter"),
@@ -970,22 +959,26 @@ function renderQuestion(opts = {}) {
   el.qTier.textContent = q.tier || "";
   el.qCounter.textContent = "CÂU " + (gameState.currentQuestion + 1) + " / " + questions.length;
   el.qState.textContent = solved ? "✓ ĐÃ ĐÚNG — ĐÃ HIỂN THỊ ĐÁP ÁN"
-                        : (opened ? "CHƯA TRẢ LỜI · ĐÃ XEM TÌNH HUỐNG" : "CHƯA TRẢ LỜI");
+                        : (opened ? "CHƯA TRẢ LỜI · ĐÃ XEM CÂU HỎI" : "CHƯA XEM CÂU HỎI");
   el.qState.classList.toggle("done", solved);
 
-  /* --- Câu hỏi hiện sẵn; nhấn vào câu hỏi (hoặc nút) để mở tình huống --- */
-  el.qText.innerHTML = '<span class="lbl">CÂU HỎI</span>' + esc(q.question);
-  el.qText.classList.toggle("peek", !opened);
+  /* --- Ban đầu chỉ hiện TÌNH HUỐNG; nhấn vào tình huống để mở CÂU HỎI --- */
+  el.qSit.innerHTML = "<b>TÌNH HUỐNG</b>" + esc(q.situation);
+  el.qSit.classList.toggle("peek", !opened);
   el.qOpen.hidden = opened;
-  el.qSit.hidden = !opened;
-  if (opened) el.qSit.innerHTML = "<b>TÌNH HUỐNG</b>" + esc(q.situation);
+  el.qText.hidden = !opened;
+  el.stripWrap.hidden = !opened;
+  el.qActions.hidden = !opened;
+  el.qMeta.hidden = !opened;
+  el.qText.innerHTML = opened ? '<span class="lbl">CÂU HỎI</span>' + esc(q.question) : "";
 
   /* --- Đáp án đã hiện (chỉ hiện khi giáo viên bấm ✓) --- */
   el.answerReveal.hidden = !solved;
   if (solved) el.answerReveal.querySelector("b").textContent = q.answer;
 
   /* --- Dải đáp án (chữ mở ngẫu nhiên bằng gợi ý) --- */
-  renderStrip(q);
+  if (opened) renderStrip(q);
+  else el.answerStrip.innerHTML = "";
 
   /* --- Feedback --- */
   if (solved) {
@@ -1063,6 +1056,13 @@ function goToQuestion(index, opts = {}) {
 function useHint() {
   const q = currentQ();
   if (isSolved(q.id)) return;
+  if (!gameState.questionOpened[q.id]) {
+    // phím tắt H khi chưa mở câu hỏi → mở câu hỏi trước
+    gameState.questionOpened[q.id] = true;
+    renderQuestion();
+    showToast("Đã mở CÂU HỎI — bấm 💡 GỢI Ý để lấy gợi ý.", "good");
+    return;
+  }
 
   const revealed = hintsOf(q.id);
   const chars = Array.from(q.answer);
@@ -1627,16 +1627,16 @@ function bindEvents() {
     if (dot) goToQuestion(parseInt(dot.dataset.index, 10));
   });
 
-  /* Mở tình huống: nhấn vào câu hỏi hoặc nút gợi ý */
-  const openSituation = () => {
+  /* Mở câu hỏi: nhấn vào khối tình huống hoặc nút gợi ý */
+  const openQuestion = () => {
     const q = currentQ();
     if (isSolved(q.id) || gameState.questionOpened[q.id]) return;
     gameState.questionOpened[q.id] = true;
     playSound("reveal");
     renderQuestion();
   };
-  el.qOpen.addEventListener("click", openSituation);
-  el.qText.addEventListener("click", openSituation);
+  el.qSit.addEventListener("click", openQuestion);
+  el.qOpen.addEventListener("click", openQuestion);
 
   /* Nút trong card câu hỏi */
   el.btnHint.addEventListener("click", useHint);
@@ -1718,7 +1718,7 @@ function renderIntroDots() {
 function initStaticCounts() {
   const n = gameConfig.questions;
   el.introSub.textContent = n + " câu hỏi · " + n + " món quà tri thức";
-  el.introCount.textContent = n;
+  if (el.introCount) el.introCount.textContent = n;
   el.finishBarText.textContent = "🎉 Bạn đã trả lời đúng cả " + n + " câu!";
   el.btnCtlConfirmAll.textContent = "✓ TOÀN BỘ " + n + " CÂU ĐÚNG";
 }
