@@ -239,15 +239,6 @@ body{
   padding:12px 14px;border-radius:0 12px 12px 0;
 }
 
-/* --- Nút gợi ý tình huống (nhấn vào câu hỏi cũng mở được) --- */
-.q-open{
-  display:inline-block;margin:0 0 16px;padding:9px 18px;
-  border:2px dashed var(--lotus);border-radius:999px;background:#fff;
-  font-family:var(--font-display);font-size:.76rem;font-weight:800;
-  letter-spacing:1.2px;color:var(--lotus);cursor:pointer;box-shadow:var(--shadow-sm);
-  transition:transform .15s ease, background .15s ease;
-}
-.q-open:hover,.q-open:focus-visible{background:#FFEAF3;transform:translateY(-2px)}
 .q-sit.peek{cursor:pointer;box-shadow:var(--shadow-sm)}
 .q-sit.peek:hover{background:rgba(245,185,66,.32)}
 .q-body{animation:screenIn .34s cubic-bezier(.2,.8,.3,1) both}
@@ -273,7 +264,6 @@ body{
 
 /* --- Dải ô đáp án (chữ mở bằng GỢI Ý hiện ở đây) --- */
 .strip-wrap{margin-top:14px}
-.strip-label{font-size:.66rem;font-weight:800;letter-spacing:1.1px;color:var(--ink-3);margin-bottom:7px}
 .strip{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
 .sl{
   width:clamp(22px,3vw,30px);height:clamp(26px,3.4vw,34px);
@@ -302,7 +292,6 @@ body{
 .fb-answer{margin-top:7px;font-family:var(--font-display);font-size:1rem;background:#fff;border:2px solid var(--ink);border-radius:10px;padding:7px 11px;display:inline-block}
 .fb-explain{margin-top:9px;font-weight:500;font-size:.9rem;line-height:1.6;color:var(--ink-2)}
 .fb-explain b{color:var(--ink)}
-.fb-score{margin-top:9px;font-size:.8rem;font-weight:700;color:var(--mint-d)}
 .fb-hint{margin-top:8px;font-size:.82rem;font-weight:700;color:var(--petal-d)}
 
 .q-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
@@ -427,6 +416,54 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
 }
 
 /* ---------- Giảm chuyển động (accessibility) ---------- */
+/* ============================================================
+   ANIMATION PACK — 6 hiệu ứng, tất cả do hành động người dùng kích hoạt
+   1) intro vào cảnh từng lớp · 2) chuyển câu trượt theo hướng bấm
+   3) mở tình huống → câu hỏi trồi lên · 4) soi sáng dải ĐÁP ÁN khi ✓ đúng
+   5) ô chữ xếp lớp khi mở · 6) số HUD nhảy khi đổi
+   ============================================================ */
+@keyframes riseIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes titleIn{from{opacity:0;transform:translateY(34px) scale(.86) rotate(-2deg)}to{opacity:1;transform:none}}
+@keyframes qIn{from{opacity:0;transform:translateX(calc(var(--dir,1) * 34px))}to{opacity:1;transform:none}}
+@keyframes sweep{from{left:-55%}to{left:135%}}
+@keyframes popNum{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+
+/* 1) INTRO — chuỗi vào cảnh: chip → tiêu đề → luồng chơi → nút BẮT ĐẦU */
+.intro-anim > *{animation:riseIn .5s cubic-bezier(.2,.85,.3,1) both}
+.intro-anim > *:nth-child(1){animation-delay:.04s}
+.intro-anim > *:nth-child(2){animation-delay:.1s}
+.intro-anim > *:nth-child(3){animation-delay:.22s}
+.intro-anim > *:nth-child(4){animation-delay:.3s}
+.intro-anim > *:nth-child(5){animation-delay:.38s}
+.intro-anim > *:nth-child(6){animation-delay:.44s}
+.intro-anim .intro-title{animation-name:titleIn;animation-duration:.72s}
+/* nút BẮT ĐẦU: vào cảnh rồi thả nổi nhẹ để thu mắt */
+.intro-anim #btnStart{
+  animation:riseIn .5s cubic-bezier(.2,.85,.3,1) .5s both,
+            floaty 3s .95s ease-in-out infinite;
+}
+
+/* 2) CHUYỂN CÂU — trượt trái khi bấm TIẾP, trượt phải khi bấm TRƯỚC */
+.q-body.q-anim{animation:qIn .34s cubic-bezier(.2,.8,.3,1) both}
+
+/* 3) MỞ TÌNH HUỐNG → CÂU HỎI trồi lên */
+.q-text{animation:screenIn .3s cubic-bezier(.2,.85,.3,1) both}
+
+/* 4) ✓ ĐÚNG → vệt sáng quét qua dải ĐÁP ÁN */
+.ans-reveal{position:relative;overflow:hidden}
+.ans-reveal.sweeping::after{
+  content:"";position:absolute;top:0;bottom:0;left:-55%;width:42%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.9),transparent);
+  transform:skewX(-18deg);animation:sweep .8s .12s ease-out both;
+}
+
+/* 5) DẢI Ô ĐÁP ÁN — mỗi ô pop theo thứ tự (delay inline trong renderStrip) */
+.sl.rev{animation:popIn .45s cubic-bezier(.2,.9,.3,1.4) both}
+.sl.done{animation:popIn .4s cubic-bezier(.2,.9,.3,1.4) both}
+
+/* 6) HUD — số ĐÃ ĐÚNG / GỢI Ý nhảy khi đổi */
+.hud-item b.pop{animation:popNum .45s cubic-bezier(.2,.9,.3,1.4)}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
 }
@@ -484,7 +521,7 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
       <div class="chain-item"><b>4</b> Hiện đáp án ✓</div>
     </div>
 
-    <div class="intro-dots-label">10 CÂU HỎI CHỜ BẠN GIẢI MÃ</div>
+    <div class="intro-dots-label" id="introCount">11 CÂU HỎI CHỜ BẠN GIẢI MÃ</div>
     <div class="intro-dots" id="introDots" aria-hidden="true"></div>
 
     <button class="btn primary big" id="btnStart" type="button">🎁 BẮT ĐẦU GIẢI MÃ</button>
@@ -513,13 +550,11 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
         <div class="q-body" id="qBody">
           <div class="q-sit" id="qSit"></div>
           <p class="q-text" id="qText" hidden></p>
-          <button class="q-open" id="qOpen" type="button">📋 NHẤN VÀO TÌNH HUỐNG ĐỂ XEM CÂU HỎI</button>
         </div>
 
         <div class="ans-reveal" id="answerReveal" hidden><span>ĐÁP ÁN</span><b></b></div>
 
         <div class="strip-wrap" id="stripWrap">
-          <div class="strip-label">DẢI ĐÁP ÁN · CHỮ VÀNG LÀ ĐÃ MỞ BẰNG 💡 GỢI Ý</div>
           <div class="strip" id="answerStrip"></div>
         </div>
 
@@ -648,7 +683,7 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
    1. CONFIG — thay đổi luật chơi tại đây
    ========================================================================== */
 const gameConfig = {
-  questions: 11,        // số câu hỏi
+  questions: 0,         // số câu hỏi — TỰ ĐỒNG BỘ từ mảng questions, không cần sửa tay
   // Nếu muốn dùng file nhạc nền riêng: đặt "nhac.mp3" cùng thư mục với index.html.
   // Để trống ("") = dùng nhạc nền không lời được tổng hợp bằng WebAudio.
   bgmFile: "nhac.mp3",             // file nhạc nền (cùng thư mục với index.html)
@@ -750,6 +785,9 @@ const questions = [
   }
 ];
 
+// Đồng bộ số câu từ dữ liệu → không bao giờ lệch config
+gameConfig.questions = questions.length;
+
 /* ==========================================================================
    3. GAME STATE — toàn bộ trạng thái nằm trong bộ nhớ runtime
    (KHÔNG dùng localStorage / sessionStorage)
@@ -818,10 +856,6 @@ const pad2 = n => String(n).padStart(2, "0");
 function validateGameData() {
   const errors = [];
 
-  if (questions.length !== gameConfig.questions) {
-    errors.push("Số câu hỏi phải bằng " + gameConfig.questions + " (hiện tại: " + questions.length + ").");
-  }
-
   const ids = {};
   questions.forEach((q, i) => {
     const label = "Câu " + (q.id != null ? q.id : (i + 1));
@@ -856,7 +890,7 @@ const el = {
   introSub: $("introSub"), introCount: $("introCount"), finishBarText: $("finishBarText"),
   progressDots: $("progressDots"), finishBar: $("finishBar"),
   qBadge: $("qBadge"), qTier: $("qTier"), qState: $("qState"), qText: $("qText"),
-  qOpen: $("qOpen"), qBody: $("qBody"), qSit: $("qSit"),
+  qBody: $("qBody"), qSit: $("qSit"),
   answerReveal: $("answerReveal"), answerStrip: $("answerStrip"),
   stripWrap: $("stripWrap"), qActions: $("qActions"),
   feedbackEl: $("feedbackEl"), qMeta: $("qMeta"),
@@ -895,9 +929,19 @@ function awardFor(correct) {
   return "🎓 NHÀ QUẢN LÝ TẬP SỰ";
 }
 
+/** Đổi số trong HUD → cho nó "nhảy" một lần */
+function popNode(node) {
+  node.classList.remove("pop");
+  void node.offsetWidth;
+  node.classList.add("pop");
+}
+
 function renderHUD() {
-  el.hudSolved.textContent = solvedCount() + "/" + gameConfig.questions;
-  el.hudHints.textContent = totalHintsUsed();
+  const solved = solvedCount() + "/" + gameConfig.questions;
+  if (el.hudSolved.textContent !== solved) { el.hudSolved.textContent = solved; popNode(el.hudSolved); }
+
+  const hints = String(totalHintsUsed());
+  if (el.hudHints.textContent !== hints) { el.hudHints.textContent = hints; popNode(el.hudHints); }
 
   el.btnSound.textContent = gameState.soundEnabled ? "🔊 ÂM THANH" : "🔇 TẮT ÂM";
   el.btnSound.setAttribute("aria-pressed", String(gameState.soundEnabled));
@@ -932,6 +976,7 @@ function renderStrip(q) {
   const revealed = hintsOf(q.id);
   const solved = isSolved(q.id);
   let html = "";
+  let letterN = 0;   // thứ tự ô chữ → delay so le cho hiệu ứng xếp lớp
   Array.from(q.answer).forEach((ch, idx) => {
     if (!isLetterChar(ch)) {
       html += ch === " "
@@ -942,7 +987,9 @@ function renderStrip(q) {
     const isRev = revealed.includes(idx);
     const cls = solved ? "sl done" : (isRev ? "sl rev" : "sl empty");
     const text = (solved || isRev) ? esc(ch) : "";
-    html += '<span class="' + cls + '">' + text + "</span>";
+    const delay = (solved || isRev) ? ' style="animation-delay:' + (letterN * 45) + 'ms"' : "";
+    html += '<span class="' + cls + '"' + delay + '>' + text + "</span>";
+    letterN++;
   });
   el.answerStrip.innerHTML = html;
 }
@@ -962,10 +1009,17 @@ function renderQuestion(opts = {}) {
                         : (opened ? "CHƯA TRẢ LỜI · ĐÃ XEM CÂU HỎI" : "CHƯA XEM CÂU HỎI");
   el.qState.classList.toggle("done", solved);
 
+  /* --- Chuyển câu: trượt theo hướng bấm --- */
+  if (opts.enter) {
+    el.qBody.style.setProperty("--dir", opts.dir || 1);
+    el.qBody.classList.remove("q-anim");
+    void el.qBody.offsetWidth;
+    el.qBody.classList.add("q-anim");
+  }
+
   /* --- Ban đầu chỉ hiện TÌNH HUỐNG; nhấn vào tình huống để mở CÂU HỎI --- */
   el.qSit.innerHTML = "<b>TÌNH HUỐNG</b>" + esc(q.situation);
   el.qSit.classList.toggle("peek", !opened);
-  el.qOpen.hidden = opened;
   el.qText.hidden = !opened;
   el.stripWrap.hidden = !opened;
   el.qActions.hidden = !opened;
@@ -985,8 +1039,7 @@ function renderQuestion(opts = {}) {
     el.feedbackEl.innerHTML =
       '<div class="feedback ok">' +
         '<div class="fb-title">✓ CHÍNH XÁC!</div>' +
-        '<div class="fb-explain"><b>Giải thích:</b> ' + esc(q.explanation) + "</div>" +
-        '<div class="fb-score">Câu ' + pad2(q.id) + " đã hoàn thành — mở đáp án cho cả lớp.</div>" +
+        '<div class="fb-explain"><b>Giải thích:</b> ' + esc(q.explanation) + "</div>"
       "</div>";
   } else {
     el.feedbackEl.innerHTML = "";
@@ -1041,10 +1094,11 @@ function renderAll() {
 function goToQuestion(index, opts = {}) {
   if (index < 0 || index >= questions.length) return;
   const changed = index !== gameState.currentQuestion;
+  const dir = index > gameState.currentQuestion ? 1 : -1;
   gameState.currentQuestion = index;
   if (changed) playSound("click");
   renderProgress();
-  renderQuestion({ enter: changed });
+  renderQuestion({ enter: changed, dir });
   if (opts.scrollIntoView) {
     el.questionPanel.scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -1118,6 +1172,12 @@ function markSolved(qid) {
   renderProgress(gameState.currentQuestion === questions.findIndex(x => x.id === qid)
                   ? gameState.currentQuestion : undefined);
   renderQuestion();
+
+  // ✓ ĐÚNG → vệt sáng quét dải đáp án + confetti ngắn (không chơi khi vừa đủ câu cuối)
+  el.answerReveal.classList.remove("sweeping");
+  void el.answerReveal.offsetWidth;
+  el.answerReveal.classList.add("sweeping");
+  if (solvedCount() < gameConfig.questions) startConfetti(2200, 70);
 
   if (!gameState.gameFinished && solvedCount() >= gameConfig.questions) {
     setTimeout(finishGame, 900);
@@ -1448,7 +1508,7 @@ function closeCelebration() {
 /* --- Confetti nhẹ bằng Canvas --- */
 let confettiRaf = null;
 let confettiPieces = [];
-function startConfetti() {
+function startConfetti(dur = 5200, count = 130) {
   const canvas = el.confetti;
   if (!canvas.getContext) return;
   const ctx = canvas.getContext("2d");
@@ -1461,7 +1521,7 @@ function startConfetti() {
   canvas.hidden = false;
 
   const colors = ["#FF6FA5", "#D6336C", "#F5B942", "#2BB673", "#FFC2D9", "#FFFFFF"];
-  confettiPieces = Array.from({ length: 130 }, () => ({
+  confettiPieces = Array.from({ length: count }, () => ({
     x: Math.random() * window.innerWidth,
     y: -20 - Math.random() * window.innerHeight * 0.6,
     w: 6 + Math.random() * 8,
@@ -1481,7 +1541,7 @@ function startConfetti() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     confettiPieces.forEach(p => {
       p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.vy += 0.02;
-      if (elapsed > 3600) p.life -= 0.02;
+      if (elapsed > dur - 1600) p.life -= 0.02;
       if (p.life <= 0 || p.y > window.innerHeight + 30) return;
       ctx.save();
       ctx.globalAlpha = Math.max(0, p.life);
@@ -1491,7 +1551,7 @@ function startConfetti() {
       ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
       ctx.restore();
     });
-    if (elapsed < 5200) confettiRaf = requestAnimationFrame(frame);
+    if (elapsed < dur) confettiRaf = requestAnimationFrame(frame);
     else stopConfetti();
   }
   confettiRaf = requestAnimationFrame(frame);
@@ -1520,6 +1580,13 @@ function showScreen(name) {
     target.classList.remove("screen-in");
     void target.offsetWidth;
     target.classList.add("screen-in");
+  }
+  if (name === "intro") {
+    // chạy lại chuỗi vào cảnh của intro mỗi lần quay về màn này
+    const card = target.querySelector(".intro-card");
+    card.classList.remove("intro-anim");
+    void card.offsetWidth;
+    card.classList.add("intro-anim");
   }
   if (name === "game") {
     el.finishBar.hidden = !gameState.gameFinished;
@@ -1636,7 +1703,6 @@ function bindEvents() {
     renderQuestion();
   };
   el.qSit.addEventListener("click", openQuestion);
-  el.qOpen.addEventListener("click", openQuestion);
 
   /* Nút trong card câu hỏi */
   el.btnHint.addEventListener("click", useHint);
@@ -1718,7 +1784,7 @@ function renderIntroDots() {
 function initStaticCounts() {
   const n = gameConfig.questions;
   el.introSub.textContent = n + " câu hỏi · " + n + " món quà tri thức";
-  if (el.introCount) el.introCount.textContent = n;
+  if (el.introCount) el.introCount.textContent = n + " CÂU HỎI CHỜ BẠN GIẢI MÃ";
   el.finishBarText.textContent = "🎉 Bạn đã trả lời đúng cả " + n + " câu!";
   el.btnCtlConfirmAll.textContent = "✓ TOÀN BỘ " + n + " CÂU ĐÚNG";
 }
