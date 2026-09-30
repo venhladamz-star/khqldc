@@ -143,16 +143,7 @@ body{
 }
 .chip.alt{background:var(--gold)}
 .chip.gift{background:#FFEDF3}
-.hud{display:flex;gap:7px;flex-wrap:wrap;margin-left:auto}
-.hud-item{
-  background:#fff;border:2px solid var(--ink);border-radius:12px;
-  padding:3px 10px;text-align:center;min-width:64px;
-}
-.hud-item span{display:block;font-size:.6rem;font-weight:700;letter-spacing:.6px;color:var(--ink-2)}
-.hud-item b{display:block;font-family:var(--font-display);font-size:1.05rem;line-height:1.15;color:var(--petal-d)}
-.hud-item.teal b{color:var(--mint-d)}
-.hud-item.violet b{color:var(--lotus)}
-.topbar-actions{display:flex;gap:7px;flex-wrap:wrap}
+.topbar-actions{display:flex;gap:7px;flex-wrap:wrap;margin-left:auto}
 
 /* ---------- Màn hình ---------- */
 .screen{padding:clamp(14px,2vw,26px);max-width:1120px;margin:0 auto}
@@ -177,17 +168,6 @@ body{
   text-transform:uppercase;letter-spacing:1.5px;
 }
 .intro-desc{max-width:660px;margin:12px auto 0;color:var(--ink-2);line-height:1.65;font-size:.98rem}
-.chain{display:flex;gap:8px;justify-content:center;align-items:stretch;flex-wrap:wrap;margin:24px 0 6px}
-.chain-item{
-  background:#fff;border:2px solid var(--ink);border-radius:14px;
-  padding:10px 13px;font-weight:600;font-size:.86rem;display:flex;align-items:center;gap:8px;
-  box-shadow:var(--shadow-sm);
-}
-.chain-item b{
-  width:24px;height:24px;flex:0 0 auto;border-radius:8px;background:var(--lotus);color:#fff;
-  display:grid;place-items:center;font-family:var(--font-display);font-size:.85rem;border:2px solid var(--ink);
-}
-.chain-arrow{align-self:center;font-weight:800;color:var(--petal-d);font-size:1.2rem}
 .intro-dots{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin:22px 0 4px}
 .intro-dot{
   width:clamp(28px,5vw,40px);height:clamp(28px,5vw,40px);
@@ -195,7 +175,7 @@ body{
   display:grid;place-items:center;font-family:var(--font-display);font-weight:800;
   font-size:.86rem;color:var(--ink-3);box-shadow:2px 2px 0 rgba(59,16,48,.35);
 }
-.intro-dots-label{font-size:.72rem;font-weight:800;letter-spacing:1px;color:var(--ink-3);margin-bottom:4px}
+.intro-dots-label{font-size:.72rem;font-weight:800;letter-spacing:1px;color:var(--ink-3);margin:22px 0 4px}
 
 /* ---------- Progress dots ---------- */
 .progress{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:clamp(10px,1.5vw,16px)}
@@ -272,7 +252,7 @@ body{
   font-size:clamp(.78rem,1.1vw,.95rem);color:var(--ink);
 }
 .sl.empty{background:repeating-linear-gradient(45deg,#FFE7EF,#FFE7EF 4px,#FFDCE8 4px,#FFDCE8 8px);color:transparent}
-.sl.rev{background:var(--gold);color:#2C1A00;animation:popIn .45s cubic-bezier(.2,.9,.3,1.4)}
+.sl.rev{background:var(--gold);color:#2C1A00}
 .sl.done{background:var(--mint);color:#04231A}
 .sl.gap{width:calc(clamp(22px,3vw,30px) * .34);border:none;background:transparent}
 .sl.punc{width:calc(clamp(22px,3vw,30px) * .6);border:none;background:transparent;border-bottom:2px solid var(--line);border-radius:0;color:var(--ink-3)}
@@ -280,7 +260,7 @@ body{
 .q-meta{
   margin-top:14px;font-size:.78rem;font-weight:700;color:var(--ink-2);
   background:rgba(245,185,66,.2);border:2px dashed rgba(59,16,48,.28);
-  border-radius:12px;padding:8px 11px;display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;
+  border-radius:12px;padding:8px 11px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
 }
 
 .feedback{margin-top:15px;border-radius:16px;padding:13px 15px;border:2px solid;font-weight:600;animation:screenIn .3s both}
@@ -308,13 +288,7 @@ body{
   padding:.35rem 1rem;
 }
 
-.finish-bar{
-  display:flex;gap:9px;align-items:center;justify-content:center;flex-wrap:wrap;
-  background:var(--gold);border:2px solid var(--ink);border-radius:16px;
-  padding:10px 14px;margin-bottom:14px;box-shadow:var(--shadow-sm);font-weight:700;
-}
-
-/* ---------- Tổng kết ---------- */
+/* ---------- Tổng kết → MÀN CẢM ƠN ---------- */
 .summary{display:flex;justify-content:center}
 .sum-card{max-width:840px;width:100%;text-align:center;padding:clamp(20px,3vw,38px)}
 .sum-kicker{font-size:.72rem;font-weight:800;letter-spacing:1.4px;color:var(--lotus)}
@@ -323,16 +297,7 @@ body{
   font-size:clamp(2rem,5.4vw,3.4rem);line-height:1;text-transform:uppercase;
   text-shadow:4px 4px 0 var(--petal);
 }
-.sum-award{
-  display:inline-block;margin:14px 0 4px;background:var(--lotus);color:#fff;
-  border:2px solid var(--ink);border-radius:999px;padding:7px 20px;
-  font-family:var(--font-display);font-weight:800;font-size:1.05rem;box-shadow:var(--shadow-sm);
-}
 .sum-note{max-width:600px;margin:16px auto 0;color:var(--ink-2);line-height:1.65;font-size:.92rem}
-.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:22px auto 0;max-width:460px}
-.sum-item{background:rgba(255,255,255,.88);border:2px solid var(--ink);border-radius:14px;padding:12px 8px}
-.sum-item b{display:block;font-family:var(--font-display);font-weight:800;font-size:1.6rem;color:var(--lotus);line-height:1.1}
-.sum-item span{display:block;font-size:.64rem;font-weight:800;letter-spacing:.7px;color:var(--ink-2);margin-top:4px}
 .sum-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:26px}
 
 /* ---------- Modal ---------- */
@@ -364,23 +329,6 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
 .err-list{margin:0;padding-left:18px;display:grid;gap:10px;font-size:.86rem;line-height:1.55;white-space:pre-line}
 .err-list li{background:var(--bad-bg);border:2px solid var(--petal-d);border-radius:10px;padding:9px 11px}
 
-/* ---------- Celebration ---------- */
-.celebration{
-  position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;
-  background:rgba(59,16,48,.5);backdrop-filter:blur(5px);padding:20px;animation:fadeIn .25s both;
-}
-.celeb-card{
-  text-align:center;background:var(--card);border:3px solid var(--ink);border-radius:26px;
-  padding:clamp(22px,4vw,44px);box-shadow:10px 10px 0 rgba(59,16,48,.9);
-  max-width:640px;width:100%;animation:winBounce .6s cubic-bezier(.2,.9,.3,1.35) both;
-}
-.celeb-title{
-  font-family:var(--font-display);font-weight:800;font-size:clamp(1.7rem,5vw,2.9rem);
-  line-height:1.05;margin:0;text-transform:uppercase;text-shadow:4px 4px 0 var(--blush);
-}
-.celeb-sub{font-size:1rem;font-weight:600;color:var(--ink-2);margin:16px 0 0;line-height:1.6}
-@keyframes winBounce{0%{transform:scale(.6) rotate(-3deg);opacity:0}60%{transform:scale(1.05) rotate(1deg)}100%{transform:scale(1) rotate(0);opacity:1}}
-
 #confetti{position:fixed;inset:0;z-index:75;pointer-events:none}
 
 /* ---------- Toast ---------- */
@@ -404,11 +352,8 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
 /* ---------- Responsive ---------- */
 @media (max-width:760px){
   .brand{font-size:.95rem}
-  .hud{width:100%;order:3;margin-left:0;justify-content:center}
-  .hud-item{flex:1 1 auto;min-width:0}
   .topbar-actions{margin-left:auto}
   .q-actions .btn{flex:1 1 46%}
-  .chain-arrow{display:none}
 }
 @media (max-width:430px){
   .btn{font-size:.85rem;padding:.55rem .8rem}
@@ -417,16 +362,15 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
 
 /* ---------- Giảm chuyển động (accessibility) ---------- */
 /* ============================================================
-   ANIMATION PACK — 6 hiệu ứng, tất cả do hành động người dùng kích hoạt
+   ANIMATION PACK — 5 hiệu ứng, tất cả do hành động người dùng kích hoạt
    1) intro vào cảnh từng lớp · 2) chuyển câu trượt theo hướng bấm
    3) mở tình huống → câu hỏi trồi lên · 4) soi sáng dải ĐÁP ÁN khi ✓ đúng
-   5) ô chữ xếp lớp khi mở · 6) số HUD nhảy khi đổi
+   5) ô chữ xếp lớp khi mở
    ============================================================ */
 @keyframes riseIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 @keyframes titleIn{from{opacity:0;transform:translateY(34px) scale(.86) rotate(-2deg)}to{opacity:1;transform:none}}
 @keyframes qIn{from{opacity:0;transform:translateX(calc(var(--dir,1) * 34px))}to{opacity:1;transform:none}}
 @keyframes sweep{from{left:-55%}to{left:135%}}
-@keyframes popNum{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
 
 /* 1) INTRO — chuỗi vào cảnh: chip → tiêu đề → luồng chơi → nút BẮT ĐẦU */
 .intro-anim > *{animation:riseIn .5s cubic-bezier(.2,.85,.3,1) both}
@@ -449,7 +393,7 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
 /* 3) MỞ TÌNH HUỐNG → CÂU HỎI trồi lên */
 .q-text{animation:screenIn .3s cubic-bezier(.2,.85,.3,1) both}
 
-/* 4) ✓ ĐÚNG → vệt sáng quét qua dải ĐÁP ÁN */
+/* 4) HIỂN THỊ ĐÁP ÁN → vệt sáng quét qua dải ĐÁP ÁN */
 .ans-reveal{position:relative;overflow:hidden}
 .ans-reveal.sweeping::after{
   content:"";position:absolute;top:0;bottom:0;left:-55%;width:42%;
@@ -457,12 +401,9 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
   transform:skewX(-18deg);animation:sweep .8s .12s ease-out both;
 }
 
-/* 5) DẢI Ô ĐÁP ÁN — mỗi ô pop theo thứ tự (delay inline trong renderStrip) */
-.sl.rev{animation:popIn .45s cubic-bezier(.2,.9,.3,1.4) both}
-.sl.done{animation:popIn .4s cubic-bezier(.2,.9,.3,1.4) both}
-
-/* 6) HUD — số ĐÃ ĐÚNG / GỢI Ý nhảy khi đổi */
-.hud-item b.pop{animation:popNum .45s cubic-bezier(.2,.9,.3,1.4)}
+/* 5) DẢI Ô ĐÁP ÁN — chỉ ô MỚI mở mới pop; ô cũ đứng yên, đổi màu êm */
+.sl{transition:background .28s ease, color .28s ease}
+.sl.fresh{animation:popIn .45s cubic-bezier(.2,.9,.3,1.4) both}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
@@ -486,10 +427,6 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
   <div class="brand">MẬT MÃ <span class="dotmark">QUẢN LÝ</span></div>
   <span class="chip">CHƯƠNG 2</span>
   <span class="chip alt">🌸 20/10</span>
-  <div class="hud">
-    <div class="hud-item teal"><span>ĐÃ ĐÚNG</span><b id="hudSolved">0/11</b></div>
-    <div class="hud-item violet"><span>GỢI Ý</span><b id="hudHints">0</b></div>
-  </div>
   <div class="topbar-actions">
     <!-- Nút nhạc bị ẩn theo yêu cầu: bật/tắt nhạc trong ⚙ ĐIỀU KHIỂN hoặc phím tắt M -->
     <button class="btn sm on" id="btnBgm" type="button" aria-pressed="true" hidden>🎵 NHẠC TẾT</button>
@@ -511,16 +448,6 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
     <h1 class="intro-title">MẬT MÃ<br /><span>QUẢN LÝ</span></h1>
     <p class="intro-sub" id="introSub">11 câu hỏi · 11 món quà tri thức</p>
 
-    <div class="chain" aria-label="Luồng chơi">
-      <div class="chain-item"><b>1</b> Đọc tình huống</div>
-      <div class="chain-arrow">→</div>
-      <div class="chain-item"><b>2</b> Tự suy nghĩ đáp án</div>
-      <div class="chain-arrow">→</div>
-      <div class="chain-item"><b>3</b> Trả lời bằng miệng</div>
-      <div class="chain-arrow">→</div>
-      <div class="chain-item"><b>4</b> Hiện đáp án ✓</div>
-    </div>
-
     <div class="intro-dots-label" id="introCount">11 CÂU HỎI CHỜ BẠN GIẢI MÃ</div>
     <div class="intro-dots" id="introDots" aria-hidden="true"></div>
 
@@ -530,12 +457,6 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
 
 <!-- ======================= MÀN 2 — GAME ======================= -->
 <section id="screenGame" class="screen" hidden>
-  <div class="finish-bar" id="finishBar" hidden>
-    <span id="finishBarText">🎉 Bạn đã trả lời đúng cả 11 câu!</span>
-    <button class="btn sm sun" id="btnShowSummary" type="button">📊 XEM TỔNG KẾT</button>
-    <button class="btn sm" id="btnPlayAgain2" type="button">↻ CHƠI LẠI</button>
-  </div>
-
   <div class="progress" id="progressDots" role="tablist" aria-label="Tiến trình các câu hỏi"></div>
 
   <div class="game-wrap">
@@ -544,7 +465,7 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
         <div class="q-top">
           <span class="q-badge" id="qBadge">CÂU 01 / 11</span>
           <span class="tag" id="qTier">NHẬN DIỆN</span>
-          <span class="q-state" id="qState">CHƯA TRẢ LỜI</span>
+          <span class="q-state" id="qState">CHƯA XEM CÂU HỎI</span>
         </div>
 
         <div class="q-body" id="qBody">
@@ -564,7 +485,7 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
 
         <div class="q-actions" id="qActions">
           <button class="btn sun" id="btnHint" type="button">💡 GỢI Ý</button>
-          <button class="btn teal" id="btnConfirm" type="button">✓ ĐÚNG · HIỆN ĐÁP ÁN</button>
+          <button class="btn teal" id="btnConfirm" type="button">📋 HIỂN THỊ ĐÁP ÁN</button>
         </div>
 
         <div class="q-nav">
@@ -577,20 +498,14 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
   </div>
 </section>
 
-<!-- ======================= MÀN 4 — TỔNG KẾT ======================= -->
+<!-- ======================= MÀN 4 — CẢM ƠN ======================= -->
 <section id="screenSummary" class="screen summary" hidden>
   <div class="sum-card panel">
     <div class="sum-kicker">🌸 CHÀO MỪNG 20/10 · KHOA HỌC QUẢN LÝ ĐẠI CƯƠNG</div>
-    <h1 class="sum-title">Giải mã hoàn tất!</h1>
-    <div class="sum-award" id="sumAward">Nhà quản lý tập sự</div>
-    <p class="sum-note" id="sumNote">
-      Bạn đã trả lời đúng <b>0/11 tình huống</b> của Chương 2 — món quà tri thức nhân ngày 20/10.
+    <h1 class="sum-title">Cảm ơn các bạn<br>đã theo dõi!</h1>
+    <p class="sum-note">
+      Chương 2 — Nguyên tắc và Phương pháp quản lý — đã khép lại. Chúc mọi người một ngày 20/10 thật nhiều niềm vui. 🌸
     </p>
-
-    <div class="sum-grid">
-      <div class="sum-item"><b id="sumRows">0 / 11</b><span>CÂU TRẢ LỜI ĐÚNG</span></div>
-      <div class="sum-item"><b id="sumHints">0</b><span>LẦN DÙNG GỢI Ý</span></div>
-    </div>
 
     <div class="sum-actions">
       <button class="btn primary big" id="btnPlayAgain" type="button">↻ CHƠI LẠI</button>
@@ -608,10 +523,10 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
 
     <div class="ctl-grid">
       <div class="ctl-block">
-        <h4>XÁC NHẬN ĐÚNG · HIỂN THỊ ĐÁP ÁN</h4>
+        <h4>HIỂN THỊ ĐÁP ÁN</h4>
         <div class="ctl-actions">
-          <button class="btn sm teal" id="btnCtlConfirm" type="button">✓ CÂU NÀY ĐÚNG</button>
-          <button class="btn sm teal" id="btnCtlConfirmAll" type="button">✓ TOÀN BỘ CÁC CÂU ĐÚNG</button>
+          <button class="btn sm teal" id="btnCtlConfirm" type="button">📋 MỞ ĐÁP ÁN CÂU NÀY</button>
+          <button class="btn sm teal" id="btnCtlConfirmAll" type="button">📋 MỞ TẤT CẢ ĐÁP ÁN</button>
         </div>
       </div>
 
@@ -651,17 +566,6 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
   </div>
 </div>
 
-<!-- ======================= CELEBRATION ======================= -->
-<div class="celebration" id="celebration" hidden role="dialog" aria-modal="true">
-  <div class="celeb-card">
-    <h2 class="celeb-title" id="celebTitle">HOÀN THÀNH CHƯƠNG 2!</h2>
-    <p class="celeb-sub" id="celebSub"></p>
-    <div class="q-actions" style="justify-content:center">
-      <button class="btn primary" id="btnCelebNext" type="button">XEM TỔNG KẾT →</button>
-    </div>
-  </div>
-</div>
-
 <canvas id="confetti" hidden></canvas>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -684,9 +588,8 @@ select:focus{outline:3px solid var(--lotus);outline-offset:2px}
    ========================================================================== */
 const gameConfig = {
   questions: 0,         // số câu hỏi — TỰ ĐỒNG BỘ từ mảng questions, không cần sửa tay
-  // Nếu muốn dùng file nhạc nền riêng: đặt "nhac.mp3" cùng thư mục với index.html.
-  // Để trống ("") = dùng nhạc nền không lời được tổng hợp bằng WebAudio.
-  bgmFile: "nhac.mp3",             // file nhạc nền (cùng thư mục với index.html)
+  // Nhạc nền = file mp3 đặt CÙNG thư mục với index.html (bắt buộc phải có).
+  bgmFile: "nhac.mp3",             // tên file nhạc nền
   bgmVolume: 0.5    // âm lượng nhạc nền: 50%
 };
 
@@ -746,10 +649,10 @@ const questions = [
   {
     id: 7,
     tier: "PHƯƠNG PHÁP QUẢN LÝ",
-    situation: "Nhằm chấn chỉnh tình trạng đi làm muộn, Giám đốc công ty ban hành quyết định hành chính áp dụng khung nội quy nghiêm ngặt: \"Nhân viên đi trễ quá 15 phút không có lý do chính đáng sẽ bị trừ 200.000 đồng/lần vào lương và hạ một bậc thi đua\".",
-    question: "Giám đốc đang sử dụng phương pháp quản lý cơ bản nào?",
-    answer: "PHƯƠNG PHÁP QUYỀN LỰC",
-    explanation: "Phương pháp mang tính cưỡng chế, chuyên quyền thông qua mệnh lệnh hành chính và quyền lực của người quản lý."
+    situation: "Trong quá trình điều hành dự án, Giám đốc dự án nắm giữ toàn bộ quyền quyết định, không giao hay ủy quyền bất kỳ hạn mức công việc nào cho cấp dưới, yêu cầu nhân viên chỉ thực hiện chính xác theo mệnh lệnh cá nhân mà không được tự ý điều chỉnh hay đóng góp ý kiến khác.",
+    question: "Giám đốc đang sử dụng phương pháp quản lý nào?",
+    answer: "PHƯƠNG PHÁP QUẢN LÝ BẰNG QUYỀN LỰC",
+    explanation: "Phương pháp quyền lực là phương pháp quản lý mang tính cưỡng chế, thực hiện thông qua mệnh lệnh cá nhân và quyền lực của người quản lý."
   },
   {
     id: 8,
@@ -815,9 +718,7 @@ let gameState = createGameState();
 
 // Trạng thái giao diện tạm thời
 const ui = {
-  busy: false,       // đang chạy chuỗi animation khi trả lời đúng
-  celebDone: null,
-  armTimer: null
+  armTimer: null      // hẹn giờ hoàn tác nút "CHƠI LẠI" (bấm 2 lần mới reset)
 };
 
 /* ==========================================================================
@@ -884,11 +785,10 @@ const $ = id => document.getElementById(id);
 const el = {
   bgLayer: $("bgLayer"),
   screenIntro: $("screenIntro"), screenGame: $("screenGame"), screenSummary: $("screenSummary"),
-  hudSolved: $("hudSolved"), hudHints: $("hudHints"),
   btnSound: $("btnSound"), btnBgm: $("btnBgm"), btnControl: $("btnControl"), btnRestart: $("btnRestart"),
   btnStart: $("btnStart"), introDots: $("introDots"),
-  introSub: $("introSub"), introCount: $("introCount"), finishBarText: $("finishBarText"),
-  progressDots: $("progressDots"), finishBar: $("finishBar"),
+  introSub: $("introSub"), introCount: $("introCount"),
+  progressDots: $("progressDots"),
   qBadge: $("qBadge"), qTier: $("qTier"), qState: $("qState"), qText: $("qText"),
   qBody: $("qBody"), qSit: $("qSit"),
   answerReveal: $("answerReveal"), answerStrip: $("answerStrip"),
@@ -901,12 +801,9 @@ const el = {
   btnCtlGoto: $("btnCtlGoto"), btnCtlSound: $("btnCtlSound"), btnCtlBgm: $("btnCtlBgm"),
   btnCtlReset: $("btnCtlReset"), btnCtlClose: $("btnCtlClose"),
   modalError: $("modalError"), errorList: $("errorList"), btnErrClose: $("btnErrClose"),
-  celebration: $("celebration"), celebTitle: $("celebTitle"), celebSub: $("celebSub"),
-  btnCelebNext: $("btnCelebNext"),
   confetti: $("confetti"), toast: $("toast"),
-  sumAward: $("sumAward"), sumNote: $("sumNote"), sumRows: $("sumRows"), sumHints: $("sumHints"),
-  btnPlayAgain: $("btnPlayAgain"), btnPlayAgain2: $("btnPlayAgain2"),
-  btnBackBoard: $("btnBackBoard"), btnShowSummary: $("btnShowSummary"),
+  btnPlayAgain: $("btnPlayAgain"),
+  btnBackBoard: $("btnBackBoard"),
   questionPanel: $("questionPanel")
 };
 
@@ -916,33 +813,10 @@ const el = {
 function isSolved(qid) { return !!gameState.questionSolved[qid]; }
 function hintsOf(qid) { return gameState.questionHints[qid]; }
 function solvedCount() { return gameState.solvedIds.length; }
-function totalHintsUsed() {
-  return Object.values(gameState.questionHints).reduce((s, a) => s + a.length, 0);
-}
 function currentQ() { return questions[gameState.currentQuestion]; }
 
-/** Danh hiệu trao theo SỐ CÂU ĐÚNG (không dùng điểm). */
-function awardFor(correct) {
-  if (correct >= gameConfig.questions) return "🏆 CHUYÊN GIA CHƯƠNG 2";
-  if (correct >= 8) return "💐 BẬC THẦY GIẢI MÃ";
-  if (correct >= 5) return "🌸 THÁM TỬ QUẢN LÝ";
-  return "🎓 NHÀ QUẢN LÝ TẬP SỰ";
-}
-
-/** Đổi số trong HUD → cho nó "nhảy" một lần */
-function popNode(node) {
-  node.classList.remove("pop");
-  void node.offsetWidth;
-  node.classList.add("pop");
-}
-
+/** Chỉ cập nhật nút âm thanh/nhạc (bộ đếm câu đúng đã bị bỏ) */
 function renderHUD() {
-  const solved = solvedCount() + "/" + gameConfig.questions;
-  if (el.hudSolved.textContent !== solved) { el.hudSolved.textContent = solved; popNode(el.hudSolved); }
-
-  const hints = String(totalHintsUsed());
-  if (el.hudHints.textContent !== hints) { el.hudHints.textContent = hints; popNode(el.hudHints); }
-
   el.btnSound.textContent = gameState.soundEnabled ? "🔊 ÂM THANH" : "🔇 TẮT ÂM";
   el.btnSound.setAttribute("aria-pressed", String(gameState.soundEnabled));
   el.btnSound.classList.toggle("on", !gameState.soundEnabled);
@@ -961,9 +835,9 @@ function renderProgress(popIndex) {
       i === gameState.currentQuestion ? "current" : "",
       popIndex === i ? "pop" : ""
     ].filter(Boolean).join(" ");
-    const mark = solved ? "✓" : q.id;
+    const mark = q.id;
     html += '<button class="' + cls + '" data-index="' + i + '" type="button" role="tab" ' +
-            'aria-label="Câu ' + q.id + (solved ? " — đã đúng" : " — chưa mở") + '">' +
+            'aria-label="Câu ' + q.id + (solved ? " — đã mở đáp án" : " — chưa mở") + '">' +
             mark + "</button>";
   });
   el.progressDots.innerHTML = html;
@@ -972,11 +846,17 @@ function renderProgress(popIndex) {
 /* ==========================================================================
    8. QUESTION FUNCTIONS — hiển thị 1 câu/ màn hình (không chọn A/B/C/D, không ô gõ)
    ========================================================================== */
+/* Snapshot dải ô của lần render trước — để chỉ animate ô MỚI mở (ô cũ không nhấp nháy) */
+let stripPrev = { qid: null, rev: [], solved: false };
+
 function renderStrip(q) {
   const revealed = hintsOf(q.id);
   const solved = isSolved(q.id);
+  const sameQ = stripPrev.qid === q.id;
+  const wasOpen = idx => sameQ && (stripPrev.solved || stripPrev.rev.includes(idx));
+
   let html = "";
-  let letterN = 0;   // thứ tự ô chữ → delay so le cho hiệu ứng xếp lớp
+  let freshN = 0;   // số ô mới mở → delay so le cho lần mở đầu
   Array.from(q.answer).forEach((ch, idx) => {
     if (!isLetterChar(ch)) {
       html += ch === " "
@@ -985,13 +865,16 @@ function renderStrip(q) {
       return;
     }
     const isRev = revealed.includes(idx);
+    const open = solved || isRev;
+    const fresh = open && !wasOpen(idx);
     const cls = solved ? "sl done" : (isRev ? "sl rev" : "sl empty");
-    const text = (solved || isRev) ? esc(ch) : "";
-    const delay = (solved || isRev) ? ' style="animation-delay:' + (letterN * 45) + 'ms"' : "";
-    html += '<span class="' + cls + '"' + delay + '>' + text + "</span>";
-    letterN++;
+    const text = open ? esc(ch) : "";
+    const delay = fresh ? ' style="animation-delay:' + (freshN * 45) + 'ms"' : "";
+    html += '<span class="' + cls + (fresh ? " fresh" : "") + '"' + delay + '>' + text + "</span>";
+    if (fresh) freshN++;
   });
   el.answerStrip.innerHTML = html;
+  stripPrev = { qid: q.id, rev: revealed.slice(), solved };
 }
 
 function renderQuestion(opts = {}) {
@@ -1005,8 +888,8 @@ function renderQuestion(opts = {}) {
   el.qBadge.textContent = "CÂU " + pad2(q.id) + " / " + gameConfig.questions;
   el.qTier.textContent = q.tier || "";
   el.qCounter.textContent = "CÂU " + (gameState.currentQuestion + 1) + " / " + questions.length;
-  el.qState.textContent = solved ? "✓ ĐÃ ĐÚNG — ĐÃ HIỂN THỊ ĐÁP ÁN"
-                        : (opened ? "CHƯA TRẢ LỜI · ĐÃ XEM CÂU HỎI" : "CHƯA XEM CÂU HỎI");
+  el.qState.textContent = !opened ? "CHƯA XEM CÂU HỎI"
+                        : (solved ? "ĐÃ HIỂN THỊ ĐÁP ÁN" : "CHƯA HIỂN THỊ ĐÁP ÁN");
   el.qState.classList.toggle("done", solved);
 
   /* --- Chuyển câu: trượt theo hướng bấm --- */
@@ -1045,28 +928,22 @@ function renderQuestion(opts = {}) {
     el.feedbackEl.innerHTML = "";
   }
 
-  /* --- Thông tin gợi ý của câu này --- */
-  const used = revealed.length;
-  el.qMeta.innerHTML =
-    "<span>Ô CHỮ ĐÃ MỞ: <b>" + used + "/" + totalLetters + "</b></span>" +
-    "<span>ĐÁP ÁN CÓ <b>" + totalLetters + "</b> CHỮ</span>" +
-    "<span>TRẠNG THÁI: <b>" + (solved ? "ĐÃ MỞ" : "CHƯA MỞ") + "</b></span>";
+  /* --- Chỉ giữ thông tin độ dài đáp án (bỏ đếm ô đã mở / trạng thái) --- */
+  const used = revealed.length;   // số ô chữ đã mở bằng gợi ý (chỉ để biết khi nào hết gợi ý)
+  el.qMeta.innerHTML = "<span>ĐÁP ÁN CÓ <b>" + totalLetters + "</b> CHỮ</span>";
 
-  /* --- Nút gợi ý / xác nhận đúng theo trạng thái --- */
+  /* --- Nút gợi ý / hiển thị đáp án theo trạng thái --- */
   if (solved) {
-    el.btnHint.textContent = "✓ ĐÃ TRẢ LỜI ĐÚNG";
+    el.btnHint.textContent = "💡 GỢI Ý";
     el.btnHint.disabled = true;
     el.btnConfirm.disabled = true;
-    el.btnConfirm.textContent = "✓ ĐÃ HIỂN THỊ ĐÁP ÁN";
+    el.btnConfirm.textContent = "📋 ĐÃ HIỂN THỊ ĐÁP ÁN";
   } else {
     el.btnConfirm.disabled = false;
-    el.btnConfirm.textContent = "✓ ĐÚNG · HIỆN ĐÁP ÁN";
+    el.btnConfirm.textContent = "📋 HIỂN THỊ ĐÁP ÁN";
     if (used >= totalLetters) {
       el.btnHint.textContent = "✓ ĐÃ MỞ HẾT GỢI Ý";
       el.btnHint.disabled = true;
-    } else if (used > 0) {
-      el.btnHint.textContent = "💡 GỢI Ý (" + used + "/" + totalLetters + ")";
-      el.btnHint.disabled = false;
     } else {
       el.btnHint.textContent = "💡 GỢI Ý";
       el.btnHint.disabled = false;
@@ -1150,10 +1027,10 @@ function useHint() {
 }
 
 /* ==========================================================================
-   10. XÁC NHẬN ĐÚNG + TRẢ LỜI
+   10. HIỂN THỊ ĐÁP ÁN (giáo viên bấm nút — không còn tính đúng/sai)
    ========================================================================== */
 /**
- * Ghi nhận câu ĐÚNG và hiện đáp án + lời giải (do giáo viên bấm ✓).
+ * Mở đáp án + lời giải cho câu này và đánh dấu câu đã hoàn tất.
  */
 function markSolved(qid) {
   const q = questions.find(x => x.id === qid);
@@ -1161,10 +1038,10 @@ function markSolved(qid) {
 
   if (!gameState.solvedIds.includes(qid)) {
     gameState.solvedIds.push(qid);
-    gameState.questionSolved[qid] = true;   // để UI nhận ra câu này đã xong
-    gameState.questionOpened[qid] = true;   // giáo viên bấm ✓ = luôn mở tình huống + câu hỏi
+    gameState.questionSolved[qid] = true;   // để UI nhận ra câu này đã mở đáp án
+    gameState.questionOpened[qid] = true;   // mở đáp án = luôn mở tình huống + câu hỏi
 
-    showToast("✓ CÂU " + pad2(q.id) + " ĐÚNG · “" + q.answer + "”", "good");
+    showToast("📋 CÂU " + pad2(q.id) + " · “" + q.answer + "”", "good");
     playSound("unlock");
   }
 
@@ -1173,7 +1050,7 @@ function markSolved(qid) {
                   ? gameState.currentQuestion : undefined);
   renderQuestion();
 
-  // ✓ ĐÚNG → vệt sáng quét dải đáp án + confetti ngắn (không chơi khi vừa đủ câu cuối)
+  // Mở đáp án → vệt sáng quét dải đáp án + confetti ngắn (không chơi khi vừa đủ câu cuối)
   el.answerReveal.classList.remove("sweeping");
   void el.answerReveal.offsetWidth;
   el.answerReveal.classList.add("sweeping");
@@ -1185,8 +1062,7 @@ function markSolved(qid) {
 }
 
 /**
- * Nút ✓ ĐÚNG của giáo viên: lớp trả lời miệng là đúng → hiện đáp án + tính câu đúng.
- * Trả lời SAI thì không bấm gì, cứ chuyển sang câu tiếp theo.
+ * Nút HIỂN THỊ ĐÁP ÁN của giáo viên: mở đáp án + lời giải cho câu này (chỉ mở 1 lần).
  */
 function confirmCorrect(qid) {
   const q = questions.find(x => x.id === qid);
@@ -1196,16 +1072,12 @@ function confirmCorrect(qid) {
   return true;
 }
 
+/** Đủ mọi câu đã mở đáp án → tự chuyển thẳng sang màn cảm ơn (không overlay, không đếm điểm). */
 function finishGame() {
   if (gameState.gameFinished) return;
   gameState.gameFinished = true;
   playSound("win");
-  showCelebration(
-    "🎁 HOÀN THÀNH " + gameConfig.questions + "/" + gameConfig.questions + "!",
-    "Cả lớp đã trả lời đúng <b>" + gameConfig.questions + " / " + gameConfig.questions + " tình huống</b> của Chương 2. " +
-    "🌸 Chúc mừng ngày 20/10!",
-    () => showSummary()
-  );
+  showSummary();
 }
 
 /* ==========================================================================
@@ -1260,170 +1132,52 @@ function toggleSound() {
 }
 
 /* ==========================================================================
-   12. NHẠC NỀN (KHÔNG LỜI) — tổng hợp bằng WebAudio
-   - Nếu gameConfig.bgmFile có tên file → phát file đó (loop).
-   - Nếu không → tự tạo vòng lặp nhạc vui (đàn + phách + chuông).
+   12. NHẠC NỀN — CHỈ phát file gameConfig.bgmFile (mp3 đặt CÙNG thư mục index.html)
+   Không dùng nhạc tổng hợp bằng WebAudio nữa; thiếu file → báo lỗi cho giáo viên.
    ========================================================================== */
-const NOTE_FREQ = (() => {
-  const names = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-  const map = Object.create(null);
-  for (let oct = 0; oct <= 7; oct++) {
-    names.forEach((n, i) => {
-      const midi = 12 * (oct + 1) + i;
-      map[n + oct] = 440 * Math.pow(2, (midi - 69) / 12);
-    });
-  }
-  return map;
-})();
-const nf = name => NOTE_FREQ[name] || 0;
-
 const bgm = {
-  enabled: true,
-  started: false,
-  timer: null,
-  step: 0,
-  nextTime: 0,
-  gain: null,
-  noiseBuf: null,
-  file: null,
-  fileReady: false
+  started: false,     // đã yêu cầu phát nhạc (từ một cú click của người dùng)
+  file: null,         // thẻ Audio của file mp3
+  fileReady: false    // file đã tải xong, phát được
 };
 
-/* Giai điệu 4 nhịp (32 nốt tám) — gam pentatonic, vui tươi */
-const BGM = {
-  bpm: 104,
-  steps: 32,
-  // Thanh melodic — giai điệu chính
-  lead: [
-    "D5", null, "E5", "G5", "E5", null, "D5", null,
-    "B4", null, "D5", "E5", "D5", null, "B4", null,
-    "A4", null, "B4", "D5", "E5", null, "D5", null,
-    "D5", null, "B4", "A4", "G4", "A4", "B4", "D5"
-  ],
-  // Đàn plectrum (nhịp pola)
-  pluck: [
-    "G3", null, null, "D4", null, "B3", null, null,
-    "E3", null, null, "B3", null, "G3", null, null,
-    "C4", null, null, "G3", null, "E4", null, null,
-    "D4", null, null, "A3", null, "F#4", null, null
-  ],
-  // Bass theo hợp G | Em | C | D
-  bass: ["G2", null, null, null, null, null, null, null,
-          "E2", null, null, null, null, null, null, null,
-          "C3", null, null, null, null, null, null, null,
-          "D3", null, null, null, null, null, null, null],
-  bassPattern: [0, 8, 16, 24]
-};
+/** Tạo thẻ Audio cho gameConfig.bgmFile — chỉ tạo 1 lần duy nhất. */
+function bgmEnsureFile() {
+  if (bgm.file || !gameConfig.bgmFile) return bgm.file;
+  const a = new Audio();
+  a.loop = true;
+  a.volume = gameConfig.bgmVolume;
+  a.preload = "auto";
+  // Phòng trình duyệt không tự lặp: hết bài → tua về đầu mà phát tiếp
+  a.addEventListener("ended", () => {
+    if (gameState.bgmEnabled && bgm.started) { a.currentTime = 0; a.play().catch(() => {}); }
+  });
+  // File tải xong → phát ngay nếu người dùng đã bật nhạc
+  a.addEventListener("canplaythrough", () => {
+    bgm.fileReady = true;
+    if (gameState.bgmEnabled && bgm.started) a.play().catch(() => {});
+  }, { once: true });
+  // File lỗi/thiếu → báo rõ để giáo viên biết cách sửa
+  a.addEventListener("error", () => {
+    bgm.fileReady = false;
+    showToast("❌ Không phát được " + gameConfig.bgmFile + " — đặt file mp3 cùng thư mục index.html", "bad");
+  }, { once: true });
+  a.src = gameConfig.bgmFile;
+  bgm.file = a;
+  return a;
+}
 
-function bgmEnsureGraph() {
-  const ctx = getAudioCtx();
-  if (!ctx) return null;
-  if (!bgm.gain) {
-    bgm.gain = ctx.createGain();
-    bgm.gain.gain.value = gameConfig.bgmVolume;   // cùng âm lượng với file nhạc (50%)
-    bgm.gain.connect(ctx.destination);
+function bgmStart() {
+  bgm.started = true;
+  if (!gameState.bgmEnabled) return;
+  const a = bgmEnsureFile();
+  if (a && bgm.fileReady) {
+    if (a.ended) a.currentTime = 0;   // chỉ tua về đầu khi bài đã phát hết
+    a.play().catch(() => {});
   }
-  if (!bgm.noiseBuf) {
-    const len = Math.floor(ctx.sampleRate * 0.4);
-    const buf = ctx.createBuffer(1, len, ctx.sampleRate);
-    const data = buf.getChannelData(0);
-    for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
-    bgm.noiseBuf = buf;
-  }
-  return bgm.gain;
-}
-
-function bgmPluck(freq, time, vol, dur) {
-  const ctx = getAudioCtx(); if (!ctx) return;
-  const o = ctx.createOscillator(); const g = ctx.createGain();
-  o.type = "triangle"; o.frequency.setValueAtTime(freq, time);
-  g.gain.setValueAtTime(0.0001, time);
-  g.gain.exponentialRampToValueAtTime(vol, time + 0.008);
-  g.gain.exponentialRampToValueAtTime(0.0001, time + dur);
-  o.connect(g).connect(bgm.gain);
-  o.start(time); o.stop(time + dur + 0.05);
-}
-function bgmLead(freq, time, vol, dur) {
-  const ctx = getAudioCtx(); if (!ctx) return;
-  const o = ctx.createOscillator(); const g = ctx.createGain();
-  const lfo = ctx.createOscillator(); const lg = ctx.createGain();
-  o.type = "sine"; o.frequency.setValueAtTime(freq, time);
-  lfo.frequency.value = 5.4; lg.gain.value = freq * 0.011;   // vibrato nhẹ như đàn
-  lfo.connect(lg).connect(o.frequency);
-  g.gain.setValueAtTime(0.0001, time);
-  g.gain.exponentialRampToValueAtTime(vol, time + 0.02);
-  g.gain.exponentialRampToValueAtTime(0.0001, time + dur);
-  o.connect(g).connect(bgm.gain);
-  o.start(time); lfo.start(time);
-  o.stop(time + dur + 0.05); lfo.stop(time + dur + 0.05);
-}
-function bgmPerc(kind, time) {
-  const ctx = getAudioCtx(); if (!ctx || !bgm.noiseBuf) return;
-  const src = ctx.createBufferSource(); src.buffer = bgm.noiseBuf;
-  const f = ctx.createBiquadFilter(); const g = ctx.createGain();
-  let dur;
-  if (kind === "wood") {           // tiếng gõ mõ/đập nhẹ
-    f.type = "bandpass"; f.frequency.value = 1400; f.Q.value = 2.5;
-    g.gain.setValueAtTime(0.07, time);
-    g.gain.exponentialRampToValueAtTime(0.0001, time + 0.09);
-    dur = 0.12;
-  } else {                          // tiếng phách lách cách (nhẹ)
-    f.type = "highpass"; f.frequency.value = 5200;
-    g.gain.setValueAtTime(0.02, time);
-    g.gain.exponentialRampToValueAtTime(0.0001, time + 0.05);
-    dur = 0.07;
-  }
-  src.connect(f).connect(g).connect(bgm.gain);
-  src.start(time);                  // PHẢI start trước, rồi mới stop
-  src.stop(time + dur);
-}
-
-function bgmScheduleStep(step, time) {
-  const i = step % BGM.steps;
-
-  const leadNote = BGM.lead[i];
-  if (leadNote) bgmLead(nf(leadNote), time, 0.10, 0.30);
-
-  const pluckNote = BGM.pluck[i];
-  if (pluckNote) bgmPluck(nf(pluckNote), time, 0.075, 0.26);
-
-  if (BGM.bassPattern.includes(i) && BGM.bass[i]) bgmPluck(nf(BGM.bass[i]), time, 0.13, 0.55);
-
-  if (i % 4 === 0) bgmPerc("wood", time);
-  if (i % 2 === 1) bgmPerc("shake", time);
-
-  // mỗi vòng: chuông ngân lên
-  if (i === 0) { bgmLead(nf("G5"), time, 0.07, 1.2); bgmLead(nf("D6"), time + 0.06, 0.05, 1.0); }
-}
-
-function bgmTick() {
-  const ctx = getAudioCtx();
-  if (!ctx || !bgm.enabled) return;
-  const stepDur = 60 / BGM.bpm / 2;            // nốt tám
-  while (bgm.nextTime < ctx.currentTime + 0.3) {
-    try { bgmScheduleStep(bgm.step, bgm.nextTime); } catch (err) { /* không để lỗi âm thanh dừng nhạc */ }
-    bgm.nextTime += stepDur;
-    bgm.step = (bgm.step + 1) % BGM.steps;
-  }
-}
-
-function bgmStartSynth() {
-  if (bgm.fileReady && bgm.file) {
-    if (bgm.file.ended) bgm.file.currentTime = 0;   // chỉ tua về đầu khi bài đã phát hết
-    bgm.file.play().catch(() => {});                // còn không thì tiếp tục đúng chỗ đã dừng
-    return;
-  }
-  const ctx = getAudioCtx();
-  if (!ctx) return;
-  if (!bgmEnsureGraph()) return;
-  if (bgm.timer) return;
-  bgm.step = 0;
-  bgm.nextTime = ctx.currentTime + 0.12;
-  bgm.timer = setInterval(bgmTick, 40);
 }
 
 function bgmStop() {
-  if (bgm.timer) { clearInterval(bgm.timer); bgm.timer = null; }
   if (bgm.file && !bgm.file.paused) bgm.file.pause();
 }
 
@@ -1434,34 +1188,10 @@ function bgmSetEnabled(on) {
   else { bgmStop(); showToast("🔇 Đã tắt nhạc nền"); }
 }
 
-function bgmStart() {
-  bgm.enabled = true;
-  if (!gameState.bgmEnabled) return;
-  // Thử dùng file nhạc của người dùng nếu có (tải trước)
-  if (!bgm.file && gameConfig.bgmFile) {
-    const a = new Audio();
-    a.loop = true; a.volume = gameConfig.bgmVolume; a.preload = "auto";
-    // Lỡ trình duyệt không lặp thì tự phát lại khi hết bài
-    a.addEventListener("ended", () => {
-      if (gameState.bgmEnabled && bgm.started) { a.currentTime = 0; a.play().catch(() => {}); }
-    });
-    a.src = gameConfig.bgmFile;
-    a.addEventListener("canplaythrough", () => {
-      bgm.file = a; bgm.fileReady = true;
-      // file nhạc sẵn sàng → dừng nhạc tổng hợp (không phát trùng 2 bản)
-      if (bgm.timer) { clearInterval(bgm.timer); bgm.timer = null; }
-      if (gameState.bgmEnabled && bgm.started) a.play().catch(() => {});
-    }, { once: true });
-    a.addEventListener("error", () => { bgm.fileReady = false; }, { once: true });
-  }
-  bgm.started = true;
-  bgmStartSynth();
-}
-
 function toggleBgm() { bgmSetEnabled(!gameState.bgmEnabled); }
 
 /* ==========================================================================
-   13. ANIMATION — HOA RƠI, toast, celebration, confetti
+   13. ANIMATION — HOA RƠI, toast, confetti
    ========================================================================== */
 /** Tạo cánh hoa rơi theo phong cách 20/10 */
 function spawnPetals(count) {
@@ -1488,21 +1218,6 @@ function showToast(msg, type) {
   el.toast.className = "toast show" + (type ? " " + type : "");
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => { el.toast.className = "toast"; }, 2600);
-}
-
-function showCelebration(title, htmlSub, onDone) {
-  el.celebTitle.textContent = title;
-  el.celebSub.innerHTML = htmlSub;
-  el.celebration.hidden = false;
-  ui.celebDone = onDone || null;
-  startConfetti();
-}
-function closeCelebration() {
-  if (el.celebration.hidden) return;
-  el.celebration.hidden = true;
-  const cb = ui.celebDone;
-  ui.celebDone = null;
-  if (cb) cb();
 }
 
 /* --- Confetti nhẹ bằng Canvas --- */
@@ -1588,28 +1303,18 @@ function showScreen(name) {
     void card.offsetWidth;
     card.classList.add("intro-anim");
   }
-  if (name === "game") {
-    el.finishBar.hidden = !gameState.gameFinished;
-  }
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function openModal(node) { node.hidden = false; }
 function closeModal(node) { node.hidden = true; }
 function anyModalOpen() {
-  return [el.modalControl, el.modalError, el.celebration].some(m => !m.hidden);
+  return [el.modalControl, el.modalError].some(m => !m.hidden);
 }
 
+/** Màn cảm ơn cuối — không số câu, không %, không danh hiệu. */
 function showSummary() {
   stopConfetti();
-  const correct = solvedCount();
-  el.sumAward.textContent = awardFor(correct);
-  el.sumRows.textContent = correct + " / " + gameConfig.questions;
-  el.sumHints.textContent = totalHintsUsed();
-  el.sumNote.innerHTML =
-    "Cả lớp đã trả lời đúng <b>" + correct + "/" + gameConfig.questions +
-    " tình huống</b> của Chương 2 — món quà tri thức nhân ngày <b>20/10</b>. 🌸" +
-    (totalHintsUsed() > 0 ? " Đã dùng <b>" + totalHintsUsed() + " gợi ý</b>." : "");
   showScreen("summary");
   startConfetti();
 }
@@ -1626,7 +1331,6 @@ function showErrorModal(errors) {
 /* --- Reset --- */
 function resetGame() {
   stopConfetti();
-  closeCelebration();
   closeModal(el.modalControl);
   closeModal(el.modalError);
   const soundOn = gameState.soundEnabled;
@@ -1634,26 +1338,24 @@ function resetGame() {
   gameState = createGameState();
   gameState.soundEnabled = soundOn;
   gameState.bgmEnabled = bgmOn;
-  ui.busy = false;
+  stripPrev = { qid: null, rev: [], solved: false };   // vòng mới → hiệu ứng ô chữ chạy lại từ đầu
   renderAll();
   showScreen("intro");
   showToast("Đã reset trò chơi — sẵn sàng vòng mới!", "good");
 }
 
-/* --- Điều khiển giảng viên: đúng → bấm ✓, sai → không bấm gì, chuyển câu --- */
+/* --- Điều khiển giảng viên: mở đáp án câu hiện tại / mở tất cả --- */
 function ctlConfirmCurrent() {
   const q = currentQ();
-  if (isSolved(q.id)) { showToast("Câu này đã được tính là đúng."); return; }
-  if (confirmCorrect(q.id)) {
-    showToast("✓ CÂU " + pad2(q.id) + " ĐÚNG · “" + q.answer + "”", "good");
-  }
+  if (isSolved(q.id)) { showToast("Câu này đã mở đáp án rồi."); return; }
+  confirmCorrect(q.id);   // toast do markSolved lo
 }
 function ctlConfirmAll() {
   let n = 0;
   questions.forEach(q => { if (confirmCorrect(q.id)) n++; });
-  if (n === 0) { showToast("Cả " + gameConfig.questions + " câu đã được tính là đúng."); return; }
+  if (n === 0) { showToast("Cả " + gameConfig.questions + " câu đã mở đáp án."); return; }
   closeModal(el.modalControl);
-  showToast("✓ Đã tính đúng " + n + " câu — hiện đáp án tất cả.", "good");
+  showToast("📋 Đã mở đáp án " + n + " câu.", "good");
 }
 /* --- Bind sự kiện --- */
 function bindEvents() {
@@ -1725,14 +1427,9 @@ function bindEvents() {
   /* Modal lỗi */
   el.btnErrClose.addEventListener("click", () => closeModal(el.modalError));
 
-  /* Celebration */
-  el.btnCelebNext.addEventListener("click", closeCelebration);
-
-  /* Tổng kết */
+  /* Màn cảm ơn */
   el.btnPlayAgain.addEventListener("click", resetGame);
-  el.btnPlayAgain2.addEventListener("click", resetGame);
   el.btnBackBoard.addEventListener("click", () => showScreen("game"));
-  el.btnShowSummary.addEventListener("click", showSummary);
 
   /* Click nền modal để đóng */
   el.modalControl.addEventListener("click", e => { if (e.target === el.modalControl) closeModal(el.modalControl); });
@@ -1740,7 +1437,6 @@ function bindEvents() {
   /* Phím tắt */
   document.addEventListener("keydown", e => {
     if (e.key === "Escape") {
-      if (!el.celebration.hidden) { closeCelebration(); return; }
       if (!el.modalControl.hidden) { closeModal(el.modalControl); return; }
       if (!el.modalError.hidden) { closeModal(el.modalError); return; }
       return;
@@ -1785,8 +1481,7 @@ function initStaticCounts() {
   const n = gameConfig.questions;
   el.introSub.textContent = n + " câu hỏi · " + n + " món quà tri thức";
   if (el.introCount) el.introCount.textContent = n + " CÂU HỎI CHỜ BẠN GIẢI MÃ";
-  el.finishBarText.textContent = "🎉 Bạn đã trả lời đúng cả " + n + " câu!";
-  el.btnCtlConfirmAll.textContent = "✓ TOÀN BỘ " + n + " CÂU ĐÚNG";
+  el.btnCtlConfirmAll.textContent = "📋 MỞ TẤT CẢ " + n + " ĐÁP ÁN";
 }
 
 function init() {
